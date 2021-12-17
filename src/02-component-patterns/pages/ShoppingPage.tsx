@@ -25,15 +25,31 @@ export const ShoppingPage = () => {
         }}
       >
         <ProductCard product={product} className="bg-dark">
-          <ProductImage className="custom-image" />
+          <ProductImage
+            className="custom-image"
+            style={{ boxShadow: "10px 10px 10px 10px rgba(0,0,0,0.2)" }}
+          />
           <ProductTitle title="Depressive mug" className="text-white" />
-          <ProductButtons />
+          <ProductButtons className="custom-buttons" />
         </ProductCard>
 
-        <ProductCard product={product}>
-          <ProductCard.Image />
-          <ProductCard.Title />
-          <ProductCard.Buttons />
+        <ProductCard product={product} style={{ backgroundColor: "red" }}>
+          <ProductImage
+            style={{ boxShadow: "10px 10px 10px 10px rgba(0,0,0,0.2)" }}
+          />
+          <ProductTitle style={{ fontWeight: "bold" }} />
+          <ProductButtons
+            style={{
+              display: "flex",
+              justifyContent: "end",
+            }}
+          />
+        </ProductCard>
+
+        <ProductCard product={product} className="bg-dark">
+          <ProductCard.Image className="custom-image" />
+          <ProductCard.Title className="text-white" />
+          <ProductCard.Buttons className="custom-buttons" />
         </ProductCard>
       </div>
     </div>
