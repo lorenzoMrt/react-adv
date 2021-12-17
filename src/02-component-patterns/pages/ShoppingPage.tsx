@@ -1,4 +1,9 @@
-import { ProductButtons, ProductCard, ProductImage, ProductTitle } from "../components"
+import {
+  ProductButtons,
+  ProductCard,
+  ProductImage,
+  ProductTitle,
+} from "../components";
 import "../styles/custom-styles.css";
 
 const product = {
