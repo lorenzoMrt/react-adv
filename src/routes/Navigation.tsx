@@ -2,14 +2,14 @@ import {
   BrowserRouter as Router,
   NavLink,
   Route,
-  Switch,
+  Switch
 } from "react-router-dom";
 import {
   FormikAbstract,
   FormikBasicPage,
   FormikComponents,
   FormikYupPage,
-  RegisterPage,
+  RegisterPage
 } from "../03-forms/pages";
 import logo from "../logo.svg";
 
