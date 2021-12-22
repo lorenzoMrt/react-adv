@@ -1,8 +1,9 @@
 import { Formik } from "formik";
 import React from "react";
+import * as Yup from "Yup";
 import { useForm } from "../hooks/useForm";
 import "../styles/styles.css";
-export const RegisterPage = () => {
+export const RegisterFormikPage = () => {
   const { name, email, password, password2, onChange, reset, isValidEmail } =
     useForm({
       name: "",
@@ -11,17 +12,29 @@ export const RegisterPage = () => {
       password2: "",
     });
 
-  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-  };
   return (
     <div>
-      <h1>Register</h1>
-      
-
-        
-      </Formik>
-      <form noValidate onSubmit={onSubmit}>
+      <h1>Register Formik Page</h1>
+      <Formik
+        initialValues={{
+          name: "",
+          email: "",
+          password: "",
+          password2: "",
+        }}
+        onSubmit={(values) => console.log(values)}
+        validationSchema={Yup.object({
+          name: Yup.string()
+            .min(2, "Name must be between 2 and 15 characters")
+            .max(15, "Name must be between 2 and 15 characters")
+            .required(),
+          email: Yup.string().email().required(),
+          password: Yup.string()
+            .min(6, "Password must be at least 6 characters")
+            .required(),
+        })}
+      ></Formik>
+      <form noValidate>
         <input
           type="text"
           placeholder="Name"
