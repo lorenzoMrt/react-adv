@@ -1,17 +1,8 @@
-import { Formik } from "formik";
-import React from "react";
-import * as Yup from "Yup";
-import { useForm } from "../hooks/useForm";
+import { Form, Formik } from "formik";
+import * as Yup from "yup";
+import { MyTextInput } from "../components";
 import "../styles/styles.css";
 export const RegisterFormikPage = () => {
-  const { name, email, password, password2, onChange, reset, isValidEmail } =
-    useForm({
-      name: "",
-      email: "",
-      password: "",
-      password2: "",
-    });
-
   return (
     <div>
       <h1>Register Formik Page</h1>
@@ -32,47 +23,48 @@ export const RegisterFormikPage = () => {
           password: Yup.string()
             .min(6, "Password must be at least 6 characters")
             .required(),
+          password2: Yup.string()
+            .oneOf([Yup.ref("password"), null], "Passwords must match")
+            .required(),
         })}
-      ></Formik>
-      <form noValidate>
-        <input
-          type="text"
-          placeholder="Name"
-          value={name}
-          onChange={onChange}
-          name="name"
-          className={`${name.trim().length <= 0 && "has-error"}`}
-        />
-        {name.trim().length <= 0 && <span>Field required*</span>}
-        <input
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={onChange}
-          name="email"
-          className={`${!isValidEmail(email.trim()) && "has-error"}`}
-        />
-        {!isValidEmail(email) && <span>Invalid Email*</span>}
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={onChange}
-          name="password"
-        />
-        <input
-          type="password"
-          placeholder="Repeat password"
-          value={password2}
-          onChange={onChange}
-          name="password2"
-        />
-        <button type="submit"> Submit </button>
-        <button type="button" onClick={reset}>
-          {" "}
-          Reset{" "}
-        </button>
-      </form>
+      >
+        {({ handleReset }) => (
+          <Form>
+            <MyTextInput
+              name={"name"}
+              label={"Name"}
+              type="text"
+              placeholder="John"
+            />
+
+            <MyTextInput
+              name={"email"}
+              label={"Email"}
+              type="email"
+              placeholder="john@doe.com"
+            />
+
+            <MyTextInput
+              name={"password"}
+              label={"Password"}
+              type="password"
+              placeholder="at least 6 characters"
+            />
+
+            <MyTextInput
+              name={"password2"}
+              label={"Confirm password"}
+              type="password"
+            />
+
+            <button type="submit"> Submit </button>
+            <button type="button" onClick={handleReset}>
+              {" "}
+              Reset{" "}
+            </button>
+          </Form>
+        )}
+      </Formik>
     </div>
   );
 };

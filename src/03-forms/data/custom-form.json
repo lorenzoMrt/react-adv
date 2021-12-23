@@ -1,0 +1,42 @@
+[
+  {
+    "type": "input",
+    "name": "firstName",
+    "placeholder": "John Doe",
+    "label": "First name",
+    "value": "loren",
+    "validations": [
+      {
+        "type": "required"
+      },
+      {
+        "type": "minLength",
+        "value": 5
+      }
+    ]
+  },
+  {
+    "type": "email",
+    "name": "email",
+    "placeholder": "John@Doe.com",
+    "label": "Email",
+    "value": "",
+    "validations": [
+      {
+        "type": "email"
+      }
+    ]
+  },
+  {
+    "type": "select",
+    "name": "perk",
+    "placeholder": "Choose a perk",
+    "label": "Perk",
+    "value": "",
+    "options": [
+      { "id": 1, "label": "Invisibilty" },
+      { "id": 2, "label": "Flying" },
+      { "id": 3, "label": "Super strength" }
+    ]
+  }
+]

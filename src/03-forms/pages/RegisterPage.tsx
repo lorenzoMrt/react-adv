@@ -1,4 +1,3 @@
-import { Formik } from "formik";
 import React from "react";
 import { useForm } from "../hooks/useForm";
 import "../styles/styles.css";
@@ -17,10 +16,6 @@ export const RegisterPage = () => {
   return (
     <div>
       <h1>Register</h1>
-      
-
-        
-      </Formik>
       <form noValidate onSubmit={onSubmit}>
         <input
           type="text"
